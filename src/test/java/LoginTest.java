@@ -22,9 +22,9 @@ public class LoginTest {
 
 
         WebElement loginField = driver.findElement(By.xpath("//*[@id='login-email']"));
-        loginField.sendKeys("the.whu@gmail.com");
+        loginField.sendKeys("xodylj@ukr.net");
         WebElement passField = driver.findElement(By.xpath("//*[@id='login-password']"));
-        passField.sendKeys("test");
+        passField.sendKeys("Kosmetista1990");
         passField.sendKeys(Keys.ENTER);
 
 

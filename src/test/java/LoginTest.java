@@ -27,7 +27,6 @@ public class LoginTest {
         passField.sendKeys(Keys.ENTER);
 
         WebElement pageTitle = driver.findElement(By.xpath("//*[@id='nav-settings__dropdown-trigger']/div/span"));
-        pageTitle.getText();
         Assert.assertEquals(pageTitle.getText(), "Профиль");
 
 

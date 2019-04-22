@@ -31,7 +31,7 @@ public class LoginTest {
         SubmitPage submitPage = new SubmitPage(driver);
         Assert.assertTrue(submitPage.isLoginErrorMessageDisplayed());
         Assert.assertEquals(submitPage.getLoginErrorMessageText(),
-                "Hmm, that's not the right password. Please try again or request a new one.\\n");
+                "Hmm, we don't recognize that email. Please try again.");
 //        driver.quit();
     }
 
@@ -42,11 +42,11 @@ public class LoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("k@ukr.net", "12341");
+        loginPage.login("xodylj@ukr.net", "12341");
         SubmitPage submitPage = new SubmitPage(driver);
         Assert.assertTrue(submitPage.isPasswordErrorMessageDisplayed());
         Assert.assertEquals(submitPage.getPasswordErrorMessageText(),
-                "Hmm, we don't recognize that email. Please try again.");
+                "Hmm, that's not the right password. Please try again or request a new one.");
 
         //        driver.quit();
     }

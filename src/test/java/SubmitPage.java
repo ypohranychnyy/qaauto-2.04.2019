@@ -9,6 +9,7 @@ public class SubmitPage {
 
     public SubmitPage(WebDriver driver) {
         this.driver = driver;
+        initElements();
     }
 
     private void initElements() {
@@ -19,6 +20,7 @@ public class SubmitPage {
     public boolean isLoginErrorMessageDisplayed() {
         return loginErrorMessage.isDisplayed();
     }
+
     public String getLoginErrorMessageText() {
         return loginErrorMessage.getText();
     }
@@ -26,6 +28,7 @@ public class SubmitPage {
     public boolean isPasswordErrorMessageDisplayed() {
         return passwordErrorMessage.isDisplayed();
     }
+
     public String getPasswordErrorMessageText() {
         return passwordErrorMessage.getText();
     }

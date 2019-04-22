@@ -16,15 +16,12 @@ public class LoginPage {
     public void initElements() {
         loginField = driver.findElement(By.xpath("//input[@id='login-email']"));
         passField = driver.findElement(By.xpath("//input[@id='login-password']"));
-
     }
 
     public void login(String userEmail, String userPassword) {
         loginField.sendKeys(userEmail);
         passField.sendKeys(userPassword);
         passField.sendKeys(Keys.ENTER);
-
-
     }
 
 }

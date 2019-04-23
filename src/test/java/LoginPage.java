@@ -7,13 +7,14 @@ public class LoginPage {
     private WebDriver driver;
     private WebElement loginField;
     private WebElement passField;
+    private WebElement loginPage;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         initElements();
     }
 
-    public void initElements() {
+    private void initElements() {
         loginField = driver.findElement(By.xpath("//input[@id='login-email']"));
         passField = driver.findElement(By.xpath("//input[@id='login-password']"));
     }
@@ -22,6 +23,13 @@ public class LoginPage {
         loginField.sendKeys(userEmail);
         passField.sendKeys(userPassword);
         passField.sendKeys(Keys.ENTER);
+    }
+
+    public boolean isLoginPageLoaded() {
+        return driver.getCurrentUrl().equals("https://www.linkedin.com/")
+                && driver.getTitle().equals("LinkedIn: Log In or Sign Up ")
+                && loginField.isDisplayed();
+//
     }
 
 }

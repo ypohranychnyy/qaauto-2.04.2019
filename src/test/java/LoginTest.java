@@ -9,13 +9,27 @@ public class LoginTest {
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
-                { "xodylj@ukr.net", "Kosmetista1990" },
-                { "Xodylj@ukr.net", "Kosmetista1990" }
+                {"xodylj@ukr.net", "Kosmetista1990"},
+                {"Xodylj@ukr.net", "Kosmetista1990"}
+        };
+    }
+    @DataProvider
+    public Object[][] invalidLoginDataProvider() {
+        return new Object[][]{
+                {"xodylj", "Kosmetista1990"},
+                {"@Ukr.net", "Kosmetista1990"}
+        };
+    }
+    @DataProvider
+    public Object[][] invalidPasswordDataProvider() {
+        return new Object[][]{
+                {"xodylj@ukr.net", "kosmetista1990"},
+                {"xodylj@ukr.net", " "}
         };
     }
 
     @Test(dataProvider = "validDataProvider")
-    public void SuccessfulLoginTest(String userEmail, String userPasword) {
+    public void SuccessfulLoginTest(String userEmail, String userPassword) {
         System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe"); //working station
 //         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         WebDriver driver = new ChromeDriver();
@@ -24,7 +38,7 @@ public class LoginTest {
         Assert.assertEquals(driver.getTitle(), "LinkedIn: Log In or Sign Up ");
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(userEmail, userPasword);
+        loginPage.login(userEmail, userPassword);
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isProfileMenuItemDisplayed());
         homePage.clickOnProfileMenuItem();
@@ -33,14 +47,15 @@ public class LoginTest {
 //        driver.quit();
     }
 
-    @Test
-    public void invalidLoginTest() {
+
+    @Test(dataProvider = "invalidLoginDataProvider")
+    public void invalidLoginTest(String userEmail, String userPassword) {
         System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe"); //working station
 //         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("t@ukr.net", "Kosmetista1990");
+        loginPage.login(userEmail, userPassword);
         SubmitPage submitPage = new SubmitPage(driver);
         Assert.assertTrue(submitPage.isLoginErrorMessageDisplayed());
         Assert.assertEquals(submitPage.getLoginErrorMessageText(),
@@ -48,14 +63,14 @@ public class LoginTest {
 //        driver.quit();
     }
 
-    @Test
-    public void invalidPasswordLoginTest() {
+    @Test(dataProvider = "invalidPasswordDataProvider")
+    public void invalidPasswordLoginTest(String userEmail, String userPassword) {
         System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe"); //working station
 //         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("xodylj@ukr.net", "12341");
+        loginPage.login(userEmail, userPassword);
         SubmitPage submitPage = new SubmitPage(driver);
         Assert.assertTrue(submitPage.isPasswordErrorMessageDisplayed());
         Assert.assertEquals(submitPage.getPasswordErrorMessageText(),

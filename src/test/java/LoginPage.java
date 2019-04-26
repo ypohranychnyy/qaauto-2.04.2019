@@ -19,17 +19,36 @@ public class LoginPage {
         passField = driver.findElement(By.xpath("//input[@id='login-password']"));
     }
 
-    public void login(String userEmail, String userPassword) {
+    public HomePage login(String userEmail, String userPassword) {
         loginField.sendKeys(userEmail);
         passField.sendKeys(userPassword);
         passField.sendKeys(Keys.ENTER);
+        return new HomePage((driver));
     }
 
     public boolean isLoginPageLoaded() {
         return driver.getCurrentUrl().equals("https://www.linkedin.com/")
                 && driver.getTitle().equals("LinkedIn: Log In or Sign Up ")
                 && loginField.isDisplayed();
-//
     }
+    public HomePage loginToHomePage(String userEmail, String userPassword) {
+        loginField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        passField.sendKeys(Keys.ENTER);
+        return new HomePage(driver);
+
+    }
+    public void loginToLoginPage(String userEmail, String userPassword) {
+        loginField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        passField.sendKeys(Keys.ENTER);
+    }
+    public SubmitPage loginToSubmitPage(String userEmail, String userPassword) {
+        loginField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        passField.sendKeys(Keys.ENTER);
+        return new SubmitPage(driver);
+    }
+
 
 }

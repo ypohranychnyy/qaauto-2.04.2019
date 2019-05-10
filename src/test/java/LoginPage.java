@@ -20,40 +20,18 @@ public class LoginPage {
         signInButton = driver.findElement(By.xpath("//input[@id='login-submit']"));
     }
 
-    public HomePage login(String userEmail, String userPassword) {
+    public <T> T login(String userEmail, String userPassword) {
         userEmailField.sendKeys(userEmail);
         userPasswordField.sendKeys(userPassword);
         signInButton.click();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (driver.getCurrentUrl().contains("/feed/")) {
+            return (T) new HomePage(driver);
         }
-        return new HomePage(driver);
-    }
-
-    public LoginPage loginToLogin(String userEmail, String userPassword) {
-        userEmailField.sendKeys(userEmail);
-        userPasswordField.sendKeys(userPassword);
-        signInButton.click();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (driver.getCurrentUrl().contains("/login-submit")) {
+            return (T) new LoginSubmitPage(driver);
+        } else {
+            return (T) new LoginPage(driver);
         }
-        return new LoginPage(driver);
-    }
-
-    public LoginSubmitPage loginToLoginSubmit(String userEmail, String userPassword) {
-        userEmailField.sendKeys(userEmail);
-        userPasswordField.sendKeys(userPassword);
-        signInButton.click();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return new LoginSubmitPage(driver);
     }
 
     public boolean isPageLoaded() {

@@ -3,7 +3,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
@@ -29,16 +28,17 @@ public class LoginTest extends BaseTest {
     public void negativeLoginWithEmptyFields() {
         Assert.assertTrue(loginPage.isPageLoaded(), "Login page is not loaded.");
 
-        loginPage.loginToLogin("", "");
+        loginPage.login("", "");
 
         Assert.assertTrue(loginPage.isPageLoaded(), "Login page is not loaded.");
+
     }
 
     @DataProvider
     public Object[][] invalidDataProvider() {
         return new Object[][]{
-                { "linkedin.tst.yanina@@gmail.com", "Test123!", "Hmm, we don't recognize that email. Please try again.", ""},
-                // { "linkedin.tst.yanina@gmail.com", "123456", "", ""}
+//                { "linkedin.tst.yanina@@gmail.com", "Test123!", "Hmm, we don't recognize that email. Please try again.", ""},
+                 { "linkedin.tst.yanina@gmail.com", "123456", "", ""}
         };
     }
 
@@ -49,7 +49,7 @@ public class LoginTest extends BaseTest {
                                              String userPasswordValidationMessage) {
         Assert.assertTrue(loginPage.isPageLoaded(), "Login page is not loaded.");
 
-        LoginSubmitPage loginSubmitPage = loginPage.loginToLoginSubmit(userEmail, userPassword);
+        LoginSubmitPage loginSubmitPage = loginPage.login(userEmail, userPassword);
 
         Assert.assertTrue(loginSubmitPage.isPageLoaded(), "LoginSubmit page is not loaded.");
 

@@ -1,11 +1,14 @@
+package test;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import page.LoginPage;
 
 public class BaseTest {
-    private WebDriver driver; //ToDo: should be private
     protected LoginPage loginPage;
+    private WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -16,9 +19,8 @@ public class BaseTest {
         driver.manage().deleteAllCookies();
         driver.get("https://www.linkedin.com");
         loginPage = new LoginPage(driver);
-        System.out.println("1st Before Method");
+//        System.out.println("1st Before Method"); //BeforeAll method
     }
-
 
 
     @AfterMethod

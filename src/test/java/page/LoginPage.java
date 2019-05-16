@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='login-email']")
     private WebElement userEmailField;
@@ -18,10 +18,12 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//input[@id='login-submit']")
     private WebElement signInButton;
 
+    @FindBy(xpath = "//*[@id='layout-main']/div//form/a")
+    private WebElement resetPasswordLink;
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
-
+        PageFactory.initElements(driver, this);
     }
 
     public <GenericPage> GenericPage login(String userEmail, String userPassword) {
@@ -34,7 +36,7 @@ public class LoginPage extends BasePage{
             e.printStackTrace();
         }
         if (driver.getCurrentUrl().contains("/feed/")) {
-            return (GenericPage) PageFactory.initElements(driver,HomePage.class); //InitElements at page.HomePage may be deleted
+            return (GenericPage) PageFactory.initElements(driver, HomePage.class); //InitElements at page.HomePage may be deleted
         }
         if (driver.getCurrentUrl().contains("/login-submit")) {
             return (GenericPage) new LoginSubmitPage(driver);//creates a new object class
@@ -47,4 +49,16 @@ public class LoginPage extends BasePage{
                 && driver.getTitle().contains("LinkedIn: Log In or Sign Up")
                 && signInButton.isDisplayed();
     }
+
+
+    public ResetPasswordPage resetPassword() {
+        resetPasswordLink.click();
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new ResetPasswordPage(driver);
+    }
+
 }

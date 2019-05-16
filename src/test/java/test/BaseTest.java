@@ -8,13 +8,14 @@ import page.LoginPage;
 
 public class BaseTest {
     protected LoginPage loginPage;
-    private WebDriver driver;
+    protected WebDriver driver;
+//    private WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\yuriy.po\\Documents\\chromedriver.exe"); //working station
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\yuriy.po\\Documents\\chromedriver.exe"); //working station
 //        System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe"); //working station
-//         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
+         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.get("https://www.linkedin.com");

@@ -54,7 +54,7 @@ public class LoginPage extends BasePage {
     public ResetPasswordPage resetPassword() {
         resetPasswordLink.click();
         try {
-            sleep(2000);
+            sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

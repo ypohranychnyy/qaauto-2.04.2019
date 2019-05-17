@@ -1,14 +1,15 @@
-package page;
+package utils;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import page.BasePage;
 
 import static java.lang.Thread.sleep;
 
-public class GmailLoginPage extends BasePage{
+public class GmailLoginPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='identifierId']")
     private WebElement userEmailField;
@@ -19,7 +20,7 @@ public class GmailLoginPage extends BasePage{
 
     public GmailLoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public boolean isPageLoaded() {

@@ -24,7 +24,7 @@ public class ResetPasswordSuccessPage extends BasePage {
     public HomePage goToHomepage() {
         goToHomepageButton.click();
         try {
-            sleep(1000);
+            sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

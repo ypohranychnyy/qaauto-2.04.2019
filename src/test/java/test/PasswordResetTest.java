@@ -3,6 +3,8 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.*;
+import utils.GmailLoginPage;
+import utils.GmailPage;
 
 public class PasswordResetTest extends BaseTest {
 
@@ -18,19 +20,19 @@ public class PasswordResetTest extends BaseTest {
         Assert.assertTrue(resetPasswordLinkSentPage.isPageLoaded(), "Reset Password Link Sent page is not loaded.");
 
         GmailLoginPage gmailLoginPage = resetPasswordLinkSentPage.redirectToGmailPage();
-        Assert.assertTrue(gmailLoginPage.isPageLoaded(), "Page is not loaded.");
+        Assert.assertTrue(gmailLoginPage.isPageLoaded(), "Gmail Login Page is not loaded.");
 
         gmailLoginPage.submitEmail(userEmail);
         GmailPage gmailPage = gmailLoginPage.submitPassword(userPassword);
-        Assert.assertTrue(gmailPage.isPageLoaded(), "Page is not loaded.");
+        Assert.assertTrue(gmailPage.isPageLoaded(), "Gmail Inbox Page is not loaded.");
 
         EnterNewPasswordPage enterNewPasswordPage = gmailPage.goToResetLink();
-        Assert.assertTrue(enterNewPasswordPage.isPageLoaded(), "Page is not loaded.");
+        Assert.assertTrue(enterNewPasswordPage.isPageLoaded(), "LinkedIn New Password Page is not loaded.");
 
         ResetPasswordSuccessPage resetPasswordSuccessPage = enterNewPasswordPage.submitNewPassword(userPassword);
-        Assert.assertTrue(resetPasswordSuccessPage.isPageLoaded(), "Page is not loaded.");
+        Assert.assertTrue(resetPasswordSuccessPage.isPageLoaded(), "Reset Success Password Page is not loaded.");
 
         HomePage homePage = resetPasswordSuccessPage.goToHomepage();
-        Assert.assertTrue(homePage.isPageLoaded(), "Page is not loaded.");
+        Assert.assertTrue(homePage.isPageLoaded(), "HomePage is not loaded.");
     }
 }

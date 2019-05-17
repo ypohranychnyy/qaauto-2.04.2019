@@ -23,7 +23,7 @@ public class ResetPasswordLinkSentPage extends BasePage {
     public GmailLoginPage redirectToGmailPage() {
         driver.get("https://mail.google.com/mail/#inbox");
         try {
-            sleep(1000);
+            sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

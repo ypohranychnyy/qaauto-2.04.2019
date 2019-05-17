@@ -13,11 +13,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\yuriy.po\\Documents\\chromedriver.exe"); //working station
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\yuriy.po\\Documents\\chromedriver.exe"); //working station
 //        System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe"); //working station
-         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
+//         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         driver = new ChromeDriver();
-        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+//        driver.manage().deleteAllCookies();
         driver.get("https://www.linkedin.com");
         loginPage = new LoginPage(driver);
 //        System.out.println("1st Before Method"); //BeforeAll method

@@ -5,6 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.HomePage;
 import page.SearchResultsPage;
+import utils.GMailService;
+import utils.Regexp;
+
 import java.util.List;
 
 public class SearchTest extends BaseTest {
@@ -33,4 +36,6 @@ public class SearchTest extends BaseTest {
                     "Search term: " + searchTerm + " not found in: \n" + searchResult);
         }
     }
+
+
 }

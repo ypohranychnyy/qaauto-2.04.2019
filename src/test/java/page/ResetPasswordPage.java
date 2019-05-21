@@ -26,7 +26,15 @@ public class ResetPasswordPage extends BaseTest {
 
     public ResetPasswordLinkSentPage submitUsername(String email) {
         usernameField.sendKeys(email);
+
+        String messageSubject = "here's the link to reset your password";
+        String messageTo = "lnkdn.tst@gmail.com";
+        String messageFrom = "security-noreply@linkedin.com";
+        utils.GMailService gMailService = new utils.GMailService();
+        gMailService.connect();
         findAccountButton.click();
+        String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
+        System.out.println("Content: " + message);
         return new ResetPasswordLinkSentPage(driver);
     }
 }

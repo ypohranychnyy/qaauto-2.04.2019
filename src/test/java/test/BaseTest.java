@@ -9,7 +9,6 @@ import page.LoginPage;
 public class BaseTest {
     protected LoginPage loginPage;
     protected WebDriver driver;
-//    private WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -23,7 +22,6 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
 //        System.out.println("1st Before Method"); //BeforeAll method
     }
-
 
     @AfterMethod
     public void afterMethod() {

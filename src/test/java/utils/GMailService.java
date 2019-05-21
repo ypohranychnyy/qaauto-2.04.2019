@@ -2,6 +2,7 @@ package utils;
 
 
 import com.sun.mail.imap.IdleManager;
+import page.BasePage;
 
 import javax.mail.*;
 import javax.mail.event.MessageCountAdapter;
@@ -13,7 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GMailService {
+public class GMailService extends BasePage {
     String host = "imap.gmail.com";
     String user;
     String pass;
@@ -54,7 +55,6 @@ public class GMailService {
         String messageTo = "lnkdn.tst@gmail.com";
         String messageFrom = "no-reply@linkedin.com";
 
-        GMailService gMailService = new GMailService();
         gMailService.connect();
         String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 60);
         System.out.println("Content: " + message);
@@ -177,4 +177,7 @@ public class GMailService {
         return null;
     }
 
+    public boolean isPageLoaded() {
+        return false;
+    }
 }

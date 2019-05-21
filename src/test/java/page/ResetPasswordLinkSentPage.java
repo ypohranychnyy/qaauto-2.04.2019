@@ -21,6 +21,8 @@ public class ResetPasswordLinkSentPage extends BasePage {
         return resendLinkButton.isDisplayed();
     }
 
+
+
     public GmailLoginPage redirectToGmailPage() {
         driver.get("https://mail.google.com/mail/#inbox");
         try {

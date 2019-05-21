@@ -15,10 +15,7 @@ public class PasswordResetTest extends BaseTest {
     @Test
     public void resetPasswordTest() {
         String userEmail = "lnkdn.tst@gmail.com",
-                userPassword = "testLink!"
-        ;
-
-
+                userPassword = "testLink!";
 
         ResetPasswordPage resetPasswordPage = loginPage.resetPassword();
         Assert.assertTrue(resetPasswordPage.isPageLoaded(), "Reset Password page is not loaded.");
@@ -26,23 +23,8 @@ public class PasswordResetTest extends BaseTest {
         ResetPasswordLinkSentPage resetPasswordLinkSentPage = resetPasswordPage.submitUsername(userEmail);
         Assert.assertTrue(resetPasswordLinkSentPage.isPageLoaded(), "Reset Password Link Sent page is not loaded.");
 
-//        @Test
-//        public void bla (){
-        String messageSubject = "the link to reset your password";
-        String messageTo = "lnkdn.tst@gmail.com";
-        String messageFrom = "no-reply@linkedin.com";
-
-            Regexp regexp = new Regexp();
-            String pattern = ".*?href=\"(https:\\/\\/www\\.linkedin\\.com\\/e\\/v2.*?tracking.*?)\" style.*?";
-            utils.GMailService gMailService = new utils.GMailService();
-            gMailService.connect();
-            String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
-            System.out.println("Content: " + message);
-            String match = regexp.findMatch(message, pattern);
-            System.out.println("Match: "+match);
-        }
-
-
+//        ResetPasswordPage resetPasswordPage =
+//                resetPasswordLinkSentPage.
 
 
         /*GmailLoginPage gmailLoginPage = resetPasswordLinkSentPage.redirectToGmailPage();
@@ -61,5 +43,4 @@ public class PasswordResetTest extends BaseTest {
         HomePage homePage = resetPasswordSuccessPage.goToHomepage();
         Assert.assertTrue(homePage.isPageLoaded(), "HomePage is not loaded.");*/
     }
-
-//}
+}

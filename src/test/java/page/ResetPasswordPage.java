@@ -1,5 +1,6 @@
 package page;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,8 +34,20 @@ public class ResetPasswordPage extends BaseTest {
         utils.GMailService gMailService = new utils.GMailService();
         gMailService.connect();
         findAccountButton.click();
+
         String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
         System.out.println("Content: " + message);
+        String resetasswordLink = message.substring(message.indexOf("href=\"") + 1,
+                message.indexOf("\" style=\"cursor:pointer;color:#008CC9;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;\">Reset my password"));
+        String bar = StringUtils.substringBetween("ABC[ This is to extract ]",
+                "href=\"",
+                "\" style=\"cursor:pointer;color:#008CC9;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;\">Reset my password")
+                .replace("amp","");
+
+
+        System.out.println(resetasswordLink);
+        driver.get(resetasswordLink);
+
         return new ResetPasswordLinkSentPage(driver);
     }
 }

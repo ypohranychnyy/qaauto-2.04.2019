@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     private WebElement signInButton;
 
     @FindBy(xpath = "//*[@id='layout-main']/div//form/a")
-    private WebElement resetPasswordLink;
+    private WebElement forgotPasswordLink;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -44,21 +44,18 @@ public class LoginPage extends BasePage {
 
     }
 
-    public boolean isPageLoaded() {
+    /*public boolean isPageLoaded() {
         return driver.getCurrentUrl().equals("https://www.linkedin.com/")
                 && driver.getTitle().contains("LinkedIn: Log In or Sign Up")
                 && signInButton.isDisplayed();
+    }*/
+
+    public RequestPasswordResetPage clickOnForgotPasswordLink() {
+        forgotPasswordLink.click();
+        return new RequestPasswordResetPage(driver);
     }
 
-
-    public ResetPasswordPage resetPassword() {
-        resetPasswordLink.click();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return new ResetPasswordPage(driver);
+    public boolean isPageLoaded() {
+        return signInButton.isDisplayed();
     }
-
 }

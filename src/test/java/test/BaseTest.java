@@ -35,7 +35,7 @@ public class BaseTest {
 //         System.setProperty("webdriver.chrome.driver", "/Users/yuriy/Documents/Webdriver/chromedriver"); //for MacOS
         driver.manage().window().maximize();
 //        driver.manage().deleteAllCookies();
-        driver.get("linkedin.com");
+        driver.get("http://linkedin.com");
         loginPage = new LoginPage(driver);
 //        System.out.println("1st Before Method"); //BeforeAll method
     }

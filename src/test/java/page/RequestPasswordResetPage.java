@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.GMailService;
 
 public class RequestPasswordResetPage extends BasePage {
     @FindBy(xpath = "//input[@id='username']")
@@ -30,7 +31,7 @@ public class RequestPasswordResetPage extends BasePage {
         String messageTo = userEmail;
         String messageFrom = "security-noreply@linkedin.com";
 
-        util.GMailService gMailService = new util.GMailService();
+        GMailService gMailService = new GMailService();
         gMailService.connect();
 
         findAccountButton.click();

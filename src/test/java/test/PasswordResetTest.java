@@ -17,11 +17,11 @@ public class PasswordResetTest extends BaseTest {
         String userEmail = "lnkdn.tst@gmail.com",
                 userPassword = "testLink!";
 
-        ResetPasswordPage resetPasswordPage = loginPage.resetPassword();
-        Assert.assertTrue(resetPasswordPage.isPageLoaded(), "Reset Password page is not loaded.");
+        //ResetPasswordPage resetPasswordPage = loginPage.clickOnForgotPasswordLink();
+       // Assert.assertTrue(resetPasswordPage.isPageLoaded(), "Reset Password page is not loaded.");
 
-        ResetPasswordLinkSentPage resetPasswordLinkSentPage = resetPasswordPage.submitUsername(userEmail);
-        Assert.assertTrue(resetPasswordLinkSentPage.isPageLoaded(), "Reset Password Link Sent page is not loaded.");
+       // ResetPasswordLinkSentPage resetPasswordLinkSentPage = resetPasswordPage.submitUsername(userEmail);
+       // Assert.assertTrue(resetPasswordLinkSentPage.isPageLoaded(), "Reset Password Link Sent page is not loaded.");
 
 //        ResetPasswordPage resetPasswordPage =
 //                resetPasswordLinkSentPage.

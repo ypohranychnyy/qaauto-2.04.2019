@@ -11,7 +11,6 @@ public class BadCodeExample {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.com");
 
-//        WebElement searchField = driver.findElement(By.name("q"));
         WebElement searchField = driver.findElement(By.xpath("//input[@name='q']"));
         String searchTerm = "Selenium";
         searchField.sendKeys(searchTerm);
@@ -29,7 +28,6 @@ public class BadCodeExample {
 
         }
 
-//        driver.quit();
     }
 
 }

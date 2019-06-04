@@ -5,8 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.HomePage;
 import page.SearchResultsPage;
-import utils.GMailService;
-import utils.Regexp;
 
 import java.util.List;
 
